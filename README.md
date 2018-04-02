@@ -9,6 +9,7 @@ An example cloud project built with the [Exekube framework](https://github.com/e
 The exekube/demo-apps-project contains configuration for deploying a Kubernetes cluster onto the Google Cloud Platform (GCP), as well as Kubernetes resources (via Helm charts) that result in this software released into the cloud:
 
 - A React application served from an NGINX deployment, behind gce-ingress (GCP HTTP(S) Load Balancer) with Google Cloud CDN enabled
+- A Rails application (puma app server) and NGINX as the reverse proxy and for serving static files that can be cached via gce-ingress CDN
 
 ## Project structure
 
