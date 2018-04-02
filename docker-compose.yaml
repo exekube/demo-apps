@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+  exekube:
+    image: ilyasotkov/exekube:latest
+    working_dir: /project
+    environment:
+      TF_INPUT: "0"
+      TF_LOG:
+      USER: root
+      ENV:
+    env_file:
+      - ./live/.env
+      - ./live/${ENV:?err}/.env
+    ports:
+      - 8001:8001
+    volumes:
+      - .:/project
+      - ./.config/helm:/root/.helm
+      - ./.config/terragrunt:/root/.terragrunt
+      - ./.config/gcloud:/root/.config/gcloud
+      - ./.config/kube:/root/.kube
+
+      # EXEKUBE DEVELOPMENT
+      - ../exekube/modules:/exekube-modules
+      - ../exekube/docker-entrypoint.sh:/usr/local/bin/docker-entrypoint.sh
+      # ---
+
+    command: kubectl proxy --address="0.0.0.0" --accept-hosts ".*"
