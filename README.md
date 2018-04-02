@@ -36,16 +36,16 @@ Every environment (dev, stg, test, prod, etc.) directory is broken down into res
 live/
 ├── dev/
 │   ├── project/
-│   ├── kube/
+│   ├── kubernetes/
 │   ├── secrets/
 │   ├── .env
-│   └── concourse-pipelines.yaml
+│   └── ci.yaml
 ├── prod/
 │   ├── project/
-│   ├── kube/
+│   ├── kubernetes/
 │   ├── secrets/
 │   ├── .env
-│   └── concourse-pipelines.yaml
+│   └── ci.yaml
 ├── .env
 └── terraform.tfvars
 ```
