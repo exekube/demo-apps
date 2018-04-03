@@ -12,10 +12,12 @@ terragrunt = {
 
 # ↓ Module configuration (empty means all default)
 
+create_static_ip_address = false
+
 dns_zones = {
   "c6ns-pw" = "c6ns.pw."
 }
 
 dns_records = {
-  "c6ns-pw" = "*.c6ns.pw."
+  #  "c6ns-pw" = "*.c6ns.pw."
 }

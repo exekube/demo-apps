@@ -25,8 +25,9 @@ release_spec = {
   tiller_namespace = "default"
   namespace        = "default"
 
-  chart_repo = "exekube"
-  chart_name = "nginx-react"
+  chart_repo    = "exekube"
+  chart_name    = "nginx-react"
+  chart_version = "0.1.0"
 
   domain_name = "dev.react-app.c6ns.pw"
 }

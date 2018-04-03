@@ -20,7 +20,7 @@ terragrunt = {
 # ↓ Module configuration (empty means all default)
 
 release_spec = {
-  enabled       = true
+  enabled       = false
   namespace     = "kube-system"
   release_name  = "ingress-controller"
   chart_repo    = "stable"

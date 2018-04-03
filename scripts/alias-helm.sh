@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ns=team1
+ns=kube-system
 
 alias helm="helm --tiller-namespace $ns \
 --tls --tls-verify \
