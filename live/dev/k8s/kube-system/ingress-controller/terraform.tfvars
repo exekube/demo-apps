@@ -20,7 +20,7 @@ terragrunt = {
 # ↓ Module configuration (empty means all default)
 
 release_spec = {
-  enabled       = false
+  enabled       = true
   namespace     = "kube-system"
   release_name  = "ingress-controller"
   chart_repo    = "stable"
@@ -28,7 +28,6 @@ release_spec = {
   chart_version = "0.11.1"
 }
 
-# kubernetes_secrets = [
-#   "kube-system/kube-lego/certs.yaml",
-# ]
-
+kubernetes_secrets = [
+  "kube-system/kube-lego/certs.yaml",
+]

@@ -1,8 +1,8 @@
 controller:
   config:
     server-tokens: "false"
-#  service:
-#    loadBalancerIP: ""
+  service:
+    loadBalancerIP: 35.187.107.8
   autoscaling:
     enabled: true
     minReplicas: 1

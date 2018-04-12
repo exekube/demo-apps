@@ -8,8 +8,6 @@ terragrunt = {
   dependencies {
     paths = [
       "../../cluster",
-      "../../kube-system/ingress-controller",
-      "../../kube-system/kube-lego",
       "../_helm",
     ]
   }
@@ -22,13 +20,14 @@ terragrunt = {
 # Module configuration
 
 release_spec = {
-  enabled          = false
-  release_name     = "rails-app"
-  namespace        = "default"
+  enabled          = true
+  release_name     = "forms-app"
   tiller_namespace = "default"
+  namespace        = "default"
 
-  chart_repo = "exekube"
-  chart_name = "rails-app"
-
-  domain_name = "dev.rails-app.c6ns.pw"
+  chart_repo    = "exekube"
+  chart_name    = "nginx-react"
+  app_version   = "0.3.2"
+  chart_version = "0.1.0"
+  domain_name   = "dev.react-app.c6ns.pw"
 }
