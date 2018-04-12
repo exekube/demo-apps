@@ -19,6 +19,11 @@ terragrunt = {
 
 # ↓ Module configuration (empty means all default)
 
+chart_repo = {
+  name = "exekube"
+  url  = "https://exekube.github.io/charts"
+}
+
 release_spec = {
   enabled       = true
   namespace     = "kube-system"
