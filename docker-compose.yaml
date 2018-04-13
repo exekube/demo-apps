@@ -47,4 +47,7 @@ services:
       # EXEKUBE DEVELOPMENT
       - ../exekube/modules:/exekube-modules
       # ---
+      # EJECT EXEKUBE TERRAFORM MODULES (COPY TO LOCAL /modules dir)
+      # - ./modules:/exekube-modules
+      # ---
     command: kubectl proxy --address="0.0.0.0" --accept-hosts ".*"
