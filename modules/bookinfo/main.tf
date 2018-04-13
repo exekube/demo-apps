@@ -15,4 +15,9 @@ kubectl apply -f \
   <(istioctl kube-inject --debug -f ${path.module}/bookinfo.yaml)
 EOF
   }
+
+  provisioner "local-exec" {
+    when    = "destroy"
+    command = "bash ${path.module}/cleanup.sh"
+  }
 }
