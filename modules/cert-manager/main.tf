@@ -23,19 +23,19 @@ provider "helm" {
 }
 
 # ------------------------------------------------------------------------------
-# Istio Helm Release
+# Cert Manager Helm Release
 # ------------------------------------------------------------------------------
 
-resource "helm_release" "istio" {
-  repository = "exekube"
-  chart      = "istio"
-  version    = "0.5.0"
+resource "helm_release" "cert-manager" {
+  repository = "stable"
+  chart      = "cert-manager"
+  version    = "0.2.8"
 
-  name      = "istio"
-  namespace = "istio-system"
+  name      = "cert-manager"
+  namespace = "kube-system"
 
   values = [
-    "${data.template_file.istio-values.rendered}",
+    "${data.template_file.cert-manager-values.rendered}",
   ]
 
   force_update     = false
@@ -47,19 +47,32 @@ resource "helm_release" "istio" {
 }
 
 # Parsed (interpolated) YAML values file
-data "template_file" "istio-values" {
-  template = "${file("${format("%s/%s", path.module, "values/istio.yaml")}")}"
+data "template_file" "cert-manager-values" {
+  template = "${file("${format("%s/%s", path.module, "values/cert-manager.yaml")}")}"
+}
 
-  vars {
-    load_balancer_ip = "${var.load_balancer_ip}"
+resource "null_resource" "cluster-issuer" {
+  depends_on = ["helm_release.cert-manager"]
+
+  provisioner "local-exec" {
+    command = "kubectl apply -f ${path.module}/certmanager/issuer-le-stg.yaml"
+  }
+
+  provisioner "local-exec" {
+    when    = "destroy"
+    command = "kubectl delete -f ${path.module}/certmanager/issuer-le-stg.yaml"
   }
 }
 
-resource "null_resource" "istio-tls" {
-  count      = 0
-  depends_on = ["helm_release.istio"]
+resource "null_resource" "test-cert" {
+  depends_on = ["null_resource.cluster-issuer"]
 
   provisioner "local-exec" {
-    command = "kubectl apply -f ${var.secrets_dir}/kube-system/istio-tls.yaml"
+    command = "kubectl apply -f ${path.module}/certmanager/cert-bookinfo-stg.yaml"
+  }
+
+  provisioner "local-exec" {
+    when    = "destroy"
+    command = "kubectl delete -f ${path.module}/certmanager/cert-bookinfo-stg.yaml"
   }
 }
