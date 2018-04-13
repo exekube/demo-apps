@@ -12,3 +12,4 @@ terragrunt = {
 
 # ↓ Module configuration (empty means all default)
 
+initial_node_count = 4

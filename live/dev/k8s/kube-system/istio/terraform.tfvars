@@ -1,15 +1,13 @@
-/*
-
 # ↓ Module metadata
 
 terragrunt = {
   terraform {
-    source = "/project/modules//apps"
+    source = "/project/modules//istio"
   }
 
   dependencies {
     paths = [
-      "../../cluster",
+      "../cluster-admin",
       "../_helm",
     ]
   }
@@ -21,10 +19,4 @@ terragrunt = {
 
 # ↓ Module configuration (empty means all default)
 
-domain_names = {
-  forms-app = "dev.react-app.c6ns.pw"
-  rails-app = "dev.rails-app.c6ns.pw"
-}
-
-*/
-
+load_balancer_ip = "35.187.107.8"

@@ -1,16 +1,13 @@
-/*
-
 # ↓ Module metadata
 
 terragrunt = {
   terraform {
-    source = "/project/modules//apps"
+    source = "/project/modules//bookinfo"
   }
 
   dependencies {
     paths = [
-      "../../cluster",
-      "../_helm",
+      "../../kube-system/istio",
     ]
   }
 
@@ -20,11 +17,4 @@ terragrunt = {
 }
 
 # ↓ Module configuration (empty means all default)
-
-domain_names = {
-  forms-app = "dev.react-app.c6ns.pw"
-  rails-app = "dev.rails-app.c6ns.pw"
-}
-
-*/
 

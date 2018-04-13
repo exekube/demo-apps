@@ -1,5 +1,6 @@
 # List namespaces to create
-namespaces: []
+namespaces:
+  - istio-system
 
 # Whether create a default deny-all policy and allow access to kube-dns for the namespaces
 networkPolicy:
