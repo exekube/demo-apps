@@ -1,9 +1,5 @@
-!**/.keep
-**/owner.json
-.config
-live/**/secrets/**
+.config/
 istio-0*/
-!.keep
-!live/**/secrets/terraform.tfvars
-!live/**/secrets/permissions.tf
+live/**/secrets/**
 !live/**/secrets/*.example
+!live/**/secrets/.keep
