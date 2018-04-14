@@ -2,7 +2,7 @@
 
 terragrunt = {
   terraform {
-    source = "/exekube-modules//gke-cluster"
+    source = "/project/modules//gke-cluster"
   }
 
   include = {
@@ -12,4 +12,3 @@ terragrunt = {
 
 # ↓ Module configuration (empty means all default)
 
-initial_node_count = 3
