@@ -2,7 +2,13 @@
 
 terragrunt = {
   terraform {
-    source = "/project/modules//gcp-secret-mgmt"
+    source = "/project/modules//forms-app"
+  }
+
+  dependencies {
+    paths = [
+      "../../kube-system/cert-manager",
+    ]
   }
 
   include = {

@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: apps-ingress
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: gce
+    kubernetes.io/ingress.global-static-ip-name: apps-ingress-ip
+spec:
+  tls:
+  - secretName: apps-ingress-tls
+    hosts:
+    - dev.forms-app.apps.exekube.us
+    - dev.guestbook.apps.exekube.us
+
+  rules:
+  - host: dev.forms-app.apps.exekube.us
+    http:
+      paths:
+      - backend:
+          serviceName: forms-app-nginx-react
+          servicePort: 80
+
+  - host: dev.guestbook.apps.exekube.us
+    http:
+      paths:
+      - backend:
+          serviceName: frontend
+          servicePort: 80

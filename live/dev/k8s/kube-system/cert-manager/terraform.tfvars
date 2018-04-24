@@ -2,7 +2,14 @@
 
 terragrunt = {
   terraform {
-    source = "/project/modules//gcp-secret-mgmt"
+    source = "/project/modules//cert-manager"
+  }
+
+  dependencies {
+    paths = [
+      "../administration-tasks",
+      "../../default/gce-ingress",
+    ]
   }
 
   include = {

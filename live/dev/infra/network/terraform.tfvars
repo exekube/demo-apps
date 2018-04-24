@@ -2,7 +2,7 @@
 
 terragrunt = {
   terraform {
-    source = "/exekube-modules//gke-network"
+    source = "/project/modules//gke-network"
   }
 
   include = {
@@ -12,12 +12,12 @@ terragrunt = {
 
 # ↓ Module configuration (empty means all default)
 
-# create_static_ip_address = true
+# create_static_ip_address = false
 
 dns_zones = {
-  "c6ns-pw" = "c6ns.pw."
+  istio-exekube-us = "istio.exekube.us."
 }
 
 dns_records = {
-  "c6ns-pw" = "*.c6ns.pw."
+  istio-exekube-us = "*.istio.exekube.us."
 }

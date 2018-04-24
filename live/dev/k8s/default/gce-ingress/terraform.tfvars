@@ -2,7 +2,13 @@
 
 terragrunt = {
   terraform {
-    source = "/project/modules//gcp-secret-mgmt"
+    source = "/project/modules//gce-ingress"
+  }
+
+  dependencies {
+    paths = [
+      "../../kube-system/helm-initializer",
+    ]
   }
 
   include = {

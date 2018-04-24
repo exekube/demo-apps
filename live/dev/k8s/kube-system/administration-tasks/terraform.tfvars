@@ -1,8 +1,14 @@
 # ↓ Module metadata
-
 terragrunt = {
   terraform {
-    source = "/project/modules//gcp-secret-mgmt"
+    source = "/project/modules//administration-tasks"
+  }
+
+  dependencies {
+    paths = [
+      "../../cluster",
+      "../helm-initializer",
+    ]
   }
 
   include = {

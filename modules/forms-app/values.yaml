@@ -1,0 +1,17 @@
+# Default values for nginx-react.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+replicaCount: 1
+resources: {}
+
+image:
+  repository: ilyasotkov/forms-app
+  tag: latest
+  pullPolicy: IfNotPresent
+
+serviceType: NodePort
+servicePort: 80
+
+ingress:
+  # If true, an Ingress Resource will be created
+  enabled: false
