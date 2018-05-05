@@ -8,7 +8,7 @@ terragrunt = {
   dependencies {
     paths = [
       "../administration-tasks",
-      "../../default/gce-ingress",
+      "../nginx-ingress",
     ]
   }
 

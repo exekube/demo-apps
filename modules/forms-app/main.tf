@@ -3,6 +3,7 @@ terraform {
 }
 
 variable "secrets_dir" {}
+variable "domain_name" {}
 
 module "forms_app" {
   source           = "/exekube-modules/helm-release"
@@ -11,6 +12,7 @@ module "forms_app" {
 
   release_name      = "forms-app"
   release_namespace = "default"
+  domain_name       = "${var.domain_name}"
 
   chart_repo    = "exekube"
   chart_name    = "nginx-react"

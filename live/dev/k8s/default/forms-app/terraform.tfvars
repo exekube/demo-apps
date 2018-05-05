@@ -18,3 +18,4 @@ terragrunt = {
 
 # ↓ Module configuration (empty means all default)
 
+domain_name = "dev.forms-app.apps.exekube.us"

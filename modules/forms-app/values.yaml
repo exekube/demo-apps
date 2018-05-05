@@ -1,7 +1,7 @@
 # Default values for nginx-react.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
-replicaCount: 1
+replicaCount: 2
 resources: {}
 
 image:
@@ -9,9 +9,18 @@ image:
   tag: latest
   pullPolicy: IfNotPresent
 
-serviceType: NodePort
+serviceType: ClusterIP
 servicePort: 80
 
 ingress:
-  # If true, an Ingress Resource will be created
   enabled: false
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    ingress.kubernetes.io/ssl-redirect: "true"
+
+  hosts:
+    - ${domain_name}
+  tls:
+    - secretName: apps-ingress-tls
+      hosts:
+        - ${domain_name}

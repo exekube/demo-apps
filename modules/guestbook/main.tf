@@ -3,6 +3,7 @@ terraform {
 }
 
 variable "secrets_dir" {}
+variable "domain_name" {}
 
 module "guestbook" {
   source           = "/exekube-modules/helm-release"
@@ -11,6 +12,7 @@ module "guestbook" {
 
   release_name      = "guestbook"
   release_namespace = "default"
+  domain_name       = "${var.domain_name}"
 
   chart_name = "guestbook/"
 }

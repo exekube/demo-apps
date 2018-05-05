@@ -2,7 +2,7 @@
 
 terragrunt = {
   terraform {
-    source = "/project/modules//gce-ingress"
+    source = "/project/modules//nginx-ingress"
   }
 
   dependencies {
@@ -18,3 +18,4 @@ terragrunt = {
 
 # ↓ Module configuration (empty means all default)
 
+load_balancer_ip = ""
