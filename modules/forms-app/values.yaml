@@ -13,7 +13,7 @@ serviceType: ClusterIP
 servicePort: 80
 
 ingress:
-  enabled: false
+  enabled: true
   annotations:
     kubernetes.io/ingress.class: nginx
     ingress.kubernetes.io/ssl-redirect: "true"
